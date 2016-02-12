@@ -27,18 +27,18 @@ public class taalKiezer {
 
     private static void kiesTaal(String ingevoerdeTaal) { // Stopt aan de hand van het meegegeven argument de gekozen taal(indien juist) in de variabele 'taal'
 
-        switch (ingevoerdeTaal) {
-            case "Nederlands":
+        switch (ingevoerdeTaal.toLowerCase()) {
+            case "nederlands":
                 taal = talen[0];
                 break;
-            case "Frans":
+            case "frans":
                 taal = talen[1];
                 break;
-            case "Engels":
+            case "engels":
                 taal = talen[2];
                 break;
             default:
-                throw new IllegalArgumentException("Ongeldige taal");
+                System.out.println("Ongeldige taal.");
         }
 
     }
@@ -49,8 +49,10 @@ public class taalKiezer {
         Scanner input = new Scanner(System.in);
         String newgame;
 
-        System.out.print("Geef uw taal in(Nederlands, Frans of Engels): ");
-        kiesTaal(input.next());
+        while (taal == null) {
+            System.out.print("Geef uw taal in(Nederlands, Frans of Engels): ");
+            kiesTaal(input.next());
+        }
 
         System.out.printf("%s%n%n", stringInTaal("lang"));
         System.out.printf("%s %s%n", stringInTaal("start"), "(y/n)");
